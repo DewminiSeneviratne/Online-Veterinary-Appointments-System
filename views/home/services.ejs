@@ -1,0 +1,80 @@
+<%- include('../_partial/_header'); -%>
+
+    <html>
+
+    <head>
+        <style>
+            div.content {
+                margin-left: 200px;
+                padding: 1px 16px;
+                height: 1000px;
+            }
+
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 85%;
+                margin-left: 210px;
+
+            }
+
+            td {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            th {
+                border: 1px solid #dddddd;
+                text-align: center;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+
+            .headercolor {
+                background-color: black;
+                color: #dddddd;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <table>
+            <tr class="headercolor">
+                <th>Name</th>
+                <th>Description</th>
+                <th>Animals</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            <% services.forEach(function(service, index) { %>
+                <tr>
+                    
+                    <td>
+                        <%= service.servicename %>
+                    </td>
+                    <td>
+                        <%= service.servicedescription %>
+                    </td>
+                    <td>
+                        <%= service.animals %>
+                    </td>
+                    <td>
+                        <%= service.price %>
+                    </td>
+                    <td>
+                        <a href="" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
+                        <a href="" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+    </body>
+
+    </html>
+
+<%- include ('../_partial/_footer'); -%>

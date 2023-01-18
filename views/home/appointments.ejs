@@ -1,0 +1,83 @@
+<%- include('../_partial/_header'); -%>
+ 
+<html>
+<head>
+<!--<link href="/css/appointments.css" rel="stylesheet" type="text/css">-->
+<style>
+    body {background-color: #f1d1e6;}
+	body {background-image: linear-gradient(to bottom right, #f1d1e6 10%, #9877ae)}
+    body {background-attachment: fixed;}
+    p    {color: #aa60de;}
+    .button1 {background-color:  #b7e784; padding: 8px 20px; border-radius: 8px; color: white; border: none} 
+    .button2 {background-color: #fa817f; padding: 8px 20px; border-radius: 8px; color: white; border: none}
+    .button1:hover {background-color: #b7e784; color: black}
+    .button2:hover {background-color: #fa817f; color: black}
+</style>
+</head>
+<body>
+    
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+    
+            <div class="panel-heading">
+                <h2 style="font-family: monospace;">BOOK AN APPOINTMENT</h2>
+            </div>
+            <div class="panel-body">
+                <form class="form-group" method="POST" action="/appointments/add">
+
+                    <p style="font-size: 15px; font-family: Verdana, Geneva, Tahoma, sans-serif; text-align: justify;" >Now you can make your appointments online without any hassle. We make sure to attend to each an every case as soon as possible.</p>
+                    
+                    <br>
+                    
+                    <select id="service" class="form-control" placeholder="Select Service" name="service" aria-describedby="basic-addon1">   
+                    
+                        <option value="">Select Service</option>
+                        <option value="Vaccination">Vaccination</option>
+                        <option value="Immunization">Immunization</option>
+                        <option value="Surgery">Surgery</option>
+                        <option value="Check Up">Check Up</option>
+                        <option value="Pet-taxi">Pet-taxi</option>
+                    </select>
+    
+                    <br />
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="*First Name" name="firstname" aria-describedby="basic-addon1" required />
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="*Last Name" name="lastname" aria-describedby="basic-addon1" required />
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="*Email" name="email" aria-describedby="basic-addon1" required />
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <input type="tel" class="form-control" placeholder="*Contact Number" pattern="[0-9]{10}" name="contactnumber" aria-describedby="basic-addon1" required />
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <input type="date" class="form-control" name="date" aria-describedby="basic-addon1" required />
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <input type="time" class="form-control" name="time" aria-describedby="basic-addon1" required />
+                    </div>
+                    <br />
+                        <textarea rows="3" class="form-control" name="message" id="appmessage" placeholder="Your Message" aria-describedby="basic-addon1"></textarea>
+                    
+                    <br />
+    
+                    <input type="submit" class="button1" value="Book Now" />
+                    <input type="reset" class="button2" value="Cancel" />
+    
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+ 
+<%- include('../_partial/_footer'); -%>

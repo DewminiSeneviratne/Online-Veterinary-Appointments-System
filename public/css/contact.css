@@ -1,0 +1,165 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	
+	font-family: 'Fira sans', sans-serif;
+}
+
+body {
+	background-color: #f1d1e6;
+	background-image: linear-gradient(to bottom right, #f1d1e6 10%, #9877ae);
+	text-align: center; 
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	height:100%;
+}
+
+
+/*.app {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}*/
+
+/*.home {
+	width: 100%;
+	max-width: 400px;
+	padding: 50px 30px;
+	background-color: #ffffff;
+	border-radius: 16px;
+	text-align: center;
+}*/
+
+
+form {
+	display: block;
+	width: 100%;
+	max-width: 500px;
+	padding: 50px 30px;
+	background-image: linear-gradient(to bottom,#9879b1, #443882);
+	box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+	border-radius: 16px;
+    margin-top: 0px;
+    display: inline-block;
+}
+
+form h1 {
+	color: #FFF;
+	font-size: 30px;
+	text-transform: uppercase;
+    margin-top: 0px;
+	margin-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+form .form-group {
+	margin-bottom: 20px;
+}
+
+form label {
+	display: block;
+	color:#eee;
+	font-size: 18px;
+	margin-bottom: 5px;
+	text-align: left;
+}
+
+form input {
+	appearance: none;
+	background: none;
+	outline: none;
+	border: none;
+}
+
+form textarea {
+	appearance: none;
+	background: none;
+	outline: none;
+	border: none;
+}
+
+form input:not([type="submit"]) {
+	display: block;
+	width: 100%;
+	padding: 15px;
+	border-radius: 8px;
+	background-color: rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+	transition: 0.4s;
+	color: #222;
+	font-size: 17px;
+	font-weight: 300;
+}
+
+form textarea:not([type="submit"]) {
+	display: block;
+	width: 100%;
+	padding: 15px;
+	border-radius: 8px;
+	background-color: rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+	transition: 0.4s;
+	color: #222;
+	font-size: 17px;
+	font-weight: 300;
+}
+
+
+form input:not([type="submit"])::placeholder {
+	color: #CCC;
+}
+
+form textarea:not([type="submit"])::placeholder {
+	color: #CCC;
+}
+
+form input:not([type="submit"]):focus, form input:not([type="submit"]):valid {
+	background-color: #fff;
+	box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+form textarea:not([type="submit"]):focus, form input:not([type="submit"]):valid {
+	background-color: #fff;
+	box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+form input[type="submit"] {
+	display: block;
+	width: 30%;
+	padding: 10px;
+	border-radius: 8px;
+	background-color: #cde3b5;
+	background-image: linear-gradient(to bottom, #cde3b5 10%, #9bb87b);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+	transition: 0.4s;
+	color: #FFF;
+	font-size: 21px;
+	font-weight: 700;
+	cursor: pointer;
+	text-align: center;
+	display: inline-block;
+}
+
+form input[type="reset"] {
+	display: block;
+	width: 30%;
+	padding: 10px;
+	border-radius: 8px;
+	background-color: #e99e96;
+	background-image: linear-gradient(to bottom, #e99e96 10%, #bb5555);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+	transition: 0.4s;
+	color: #FFF;
+	font-size: 20px;
+	font-weight: 700;
+	cursor: pointer;
+	text-align: center;
+	display: inline-block;
+	
+}

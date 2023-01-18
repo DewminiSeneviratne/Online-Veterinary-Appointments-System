@@ -1,0 +1,138 @@
+<%- include('../_partial/_navbarAdminPanel'); -%>
+
+<html>
+    <head>
+    <style>
+
+        div.content {
+          margin-left: 200px;
+          padding: 1px 16px;
+          height: 1000px;
+        }
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 85%;
+  margin-left: 210px;
+  
+}
+
+td {
+  border: 1px solid #c8c8c8;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.headercolor{
+  background-color: black;
+  color: #dddddd;
+}
+
+        </style>
+         </head>
+
+<body>
+        <br><br> <br><br>
+
+    <!--
+      <div class="row my-4">
+        <div class="col-leg-12">
+          <div class="table-responsive">
+            
+            <div class="table table-striped text-center">
+              <thead>
+                <tr class="table-dark">
+                  <th>id</th>
+                  <th>Required Service</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Contact Number</th>
+                  <th>Appointmnet Date</th>
+                  <th>Appointment Time</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Vaccination</td>
+                  <td>John</td>
+                  <td>David</td>
+                  <td>johnd@gmail.com</td>
+                  <td>0712396456</td>
+                  <td>28/01/2023</td>
+                  <td>2.30 p.m.</td>
+                  <td>Hello</td>
+                  <td>
+                    <a href="" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
+                    <a href="" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </div>
+          </div>>
+        </div>
+      </div>
+    </div> -->
+
+    <table>
+      <thead>
+        <tr class="headercolor">
+          <th>id</th>
+          <th>Required Service</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Contact Number</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Message</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+
+      <tbody>
+        <%_ appointments.forEach((row, index) => { _%>
+          <tr>
+            <td><%= index %></td>
+            <td><%= row.service %></td>
+            <td><%= row.firstname %>n</td>
+            <td><%= row.lastname %></td>
+            <td><%= row.email %></td>
+            <td><%= row.contactnumber %></td>
+            <td><%= row.date %></td>
+            <td><%= row.time %></td>
+            <td><%= row.message  %></td>
+            <td>
+              <a href="/edit/<%= row._id %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
+              <a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+            </td>
+          </tr>
+
+          
+        <%_ }) _%>
+      </tbody>
+        
+
+      </table>
+      
+
+</body>
+</html>
+
+
+
+<%- include ('../_partial/_footer'); -%> 

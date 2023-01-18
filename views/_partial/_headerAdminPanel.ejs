@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+ 
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lil Paws</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+ 
+<body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+     <div class="container">
+        <div class="navbar-header">
+        <a class="navbar-brand" href="#"><b>Lil Paws</b></a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Welcome Admin!</a></li>
+        <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</div>
+ 
+<div class="container">
+
+
+    <% if(error && error.length > 0) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+    <% } %>
+    
+    <% if(info && info.length > 0) { %>
+        <div class="alert alert-info" role="alert">
+            <%= info %>
+        </div>
+    <% } %>
+
+    <% if(success && success.length > 0) { %>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+    <% } %>
+    
+    <!--<% if(success && success.length > 0) { %>
+        <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <%= success %>
+        </div>
+    <% } %> -->
+
+

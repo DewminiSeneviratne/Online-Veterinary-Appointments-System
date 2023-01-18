@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+ 
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lil Paws</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+ 
+<body>
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+     <div class="container">
+        <div class="navbar-header">
+        <a class="navbar-brand" href="/"><b>Lil Paws</b></a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/appointments">Appointments</a></li>
+        <li><a href="/services">Our Services</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        
+        
+        <% if(adminname == "admin" && adminpwd == "admin123"){ %>
+            <li><a href="/posts">My Posts</a></li>
+            <li><a href="#">Welcome Admin!</a></li>
+            <li><a href="/logout">Logout</a></li>
+        <% } %>
+        <% if(adminname == null || adminpwd == null) {%>
+            <li><a href="/login">Admin Log In</a></li>
+            <li><a href="/posts">My Posts</a></li>
+        <% } %>
+        
+        </ul>
+    </div>
+</div>
+ 
+<div class="container">
+
+    <% if(error && error.length > 0) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+    <% } %>
+    
+    <% if(info && info.length > 0) { %>
+        <div class="alert alert-info" role="alert">
+            <%= info %>
+        </div>
+    <% } %>
+
+    <% if(success && success.length > 0) { %>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+    <% } %>
