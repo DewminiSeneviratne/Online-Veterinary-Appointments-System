@@ -1,5 +1,101 @@
 <%- include('../_partial/_header'); -%>
 
-<h1>Welcome to home page</h1>
+    <html>
 
-<%- include ('../_partial/_footer'); -%>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+                background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/images/homeback.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+
+            }
+
+            .hero-image {
+                background-image: url("/images/homecover.jpg");
+                height: 500px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+            }
+
+            .hero-text {
+                text-align: center;
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+            }
+
+            .second-image {
+                background-image: url("/images/home.jpg");
+                height: 900px;
+                background-position: center;
+                background-repeat: no-repeat;
+                position: relative;
+                background-size: contain;
+            }
+
+            .second-text {
+                text-align: center;
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-shadow: 0 0 3px #ffffff, 0 0 3px black;
+            }
+        </style>
+    </head>
+
+    <body><br><br><br><br><br> <br><br><br>
+
+
+        <div class="hero-image">
+            <div class="hero-text">
+                <h1 style="font-size:50px; font-family: curlz mt; font-weight: bold;">CONNECT. CARE. CURE.</h1>
+                <h2 style="font-family: comic sans ms">Beacause Pets Are Family <br> We Connect, Care and Cure Your
+                    Companion Animal.</h2>
+            </div>
+        </div>
+
+        <!--<img src="/images/homecover.jpg" alt="vet" class="cover" style="width: 100%; height: 100%;">-->
+
+        <br><br><br><br><br>
+
+        <!-- <img src="/images/home.jpg" alt="vet" class="cover" style="width: 100%; height: 100%;">-->
+
+
+        <div class="second-image" >
+            <div class="second-text">
+                <h1 style="font-size:30px; font-family: kristen itc;">Welcome to Lil Paws Vet Clinic</h1>
+                <h2 style="font-family: mv boli;">Dedicated to Pets and People</h2> <br>
+                <h3 style="font-family: comic sans ms; text-align: justify;">Lil Paws Vet Clinic is dedicated to offer you a quality veterinary service at a reasonable
+                    price.<br><br>
+
+                    We are open all 7 days a week between 8.00am to 10.00pm and Poya days (8.00am – 5.00pm) to cater all
+                    your pet care needs. <br><br>
+
+                    We are capable of vast number of services such as vaccination treatments to surgeries, digital X
+                    ray, Pet taxi and Ambulance services.<br><br>
+                    
+                    We are dedicated to provide the best care for your pet companions throughout their lives.<br><br>
+
+                    Please contact us on 011 7 400 400 for all your animal health care needs.</h3>
+
+            </div>
+        </div>
+
+
+
+        <br><br><br><br><br>
+
+    </body>
+
+    </html>
+
+    <%- include('../_partial/_footer'); -%>

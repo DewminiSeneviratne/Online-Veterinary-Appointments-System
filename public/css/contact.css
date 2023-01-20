@@ -2,19 +2,15 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	
-	font-family: 'Fira sans', sans-serif;
 }
 
 body {
-	background-color: #f1d1e6;
-	background-image: linear-gradient(to bottom right, #f1d1e6 10%, #9877ae);
-	text-align: center; 
+	text-align: center;
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	height:100%;
+	height: 100%;
 }
 
 
@@ -40,21 +36,25 @@ form {
 	width: 100%;
 	max-width: 500px;
 	padding: 50px 30px;
-	background-image: linear-gradient(to bottom,#9879b1, #443882);
-	box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+	background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1)), url('/images/contactform.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50% 50%;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.7);
 	border-radius: 16px;
-    margin-top: 0px;
-    display: inline-block;
+	margin-top: 0px;
+	display: inline-block;
 }
 
 form h1 {
-	color: #FFF;
+	color: rgb(71, 49, 4);
 	font-size: 30px;
 	text-transform: uppercase;
-    margin-top: 0px;
+	margin-top: 0px;
 	margin-bottom: 30px;
-    text-align: center;
-    font-weight: bold;
+	text-align: center;
+	font-weight: bold;
+	font-family: cursive;
 }
 
 form .form-group {
@@ -63,10 +63,13 @@ form .form-group {
 
 form label {
 	display: block;
-	color:#eee;
+	color: black;
 	font-size: 18px;
 	margin-bottom: 5px;
 	text-align: left;
+	font-family: papyrus;
+	font-weight: bold;
+
 }
 
 form input {
@@ -91,9 +94,11 @@ form input:not([type="submit"]) {
 	background-color: rgba(0, 0, 0, 0.2);
 	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 	transition: 0.4s;
-	color: #222;
+	color: black;
 	font-size: 17px;
 	font-weight: 300;
+	font-family: cursive;
+	
 }
 
 form textarea:not([type="submit"]) {
@@ -107,23 +112,28 @@ form textarea:not([type="submit"]) {
 	color: #222;
 	font-size: 17px;
 	font-weight: 300;
+	font-family: cursive;
 }
 
 
 form input:not([type="submit"])::placeholder {
-	color: #CCC;
+	color: rgb(86, 85, 85);
+	font-family: cursive;
 }
 
 form textarea:not([type="submit"])::placeholder {
-	color: #CCC;
+	color: rgb(86, 85, 85);
+	font-family: cursive;
 }
 
-form input:not([type="submit"]):focus, form input:not([type="submit"]):valid {
+form input:not([type="submit"]):focus,
+form input:not([type="submit"]):valid {
 	background-color: #fff;
 	box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-form textarea:not([type="submit"]):focus, form input:not([type="submit"]):valid {
+form textarea:not([type="submit"]):focus,
+form input:not([type="submit"]):valid {
 	background-color: #fff;
 	box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
@@ -144,6 +154,7 @@ form input[type="submit"] {
 	cursor: pointer;
 	text-align: center;
 	display: inline-block;
+	font-family: cursive;
 }
 
 form input[type="reset"] {
@@ -161,5 +172,5 @@ form input[type="reset"] {
 	cursor: pointer;
 	text-align: center;
 	display: inline-block;
-	
+
 }

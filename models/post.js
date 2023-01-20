@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+/*var mongoose = require("mongoose");
 
 
 var postSchema = mongoose.Schema({
@@ -13,4 +13,4 @@ var postSchema = mongoose.Schema({
 
 var Post = mongoose.model("Post", postSchema);
 
-module.exports = Post;
+module.exports = Post;*/

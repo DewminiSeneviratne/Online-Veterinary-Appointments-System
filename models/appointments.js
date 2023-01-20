@@ -9,11 +9,11 @@ var appointmentsSchema = mongoose.Schema({
     email:   {type: String, required:true},
     contactnumber: {type:Number,required:true},
     date:    {type: Date, required:true},
-    time:    {type: String, required:true},
+    //time:    {type: String, required:true},
     message: {type: String, required:false},
     createdAt:  {type:Date, default:Date.now},
     userID:{type:mongoose.Schema.Types.ObjectId, required:false, unique:false},
-    public:{type:Boolean, default:false, required:false,unique:false},
+    appointmentID: {type: Number, required:true}
 
 });
 

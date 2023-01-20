@@ -1,83 +1,356 @@
 <%- include('../_partial/_header'); -%>
- 
-<html>
-<head>
-<!--<link href="/css/appointments.css" rel="stylesheet" type="text/css">-->
-<style>
-    body {background-color: #f1d1e6;}
-	body {background-image: linear-gradient(to bottom right, #f1d1e6 10%, #9877ae)}
-    body {background-attachment: fixed;}
-    p    {color: #aa60de;}
-    .button1 {background-color:  #b7e784; padding: 8px 20px; border-radius: 8px; color: white; border: none} 
-    .button2 {background-color: #fa817f; padding: 8px 20px; border-radius: 8px; color: white; border: none}
-    .button1:hover {background-color: #b7e784; color: black}
-    .button2:hover {background-color: #fa817f; color: black}
-</style>
-</head>
-<body>
-    
+    <!DOCTYPE html>
+    <html>
 
-    <div class="col-md-6">
-        <div class="panel panel-default">
-    
-            <div class="panel-heading">
-                <h2 style="font-family: monospace;">BOOK AN APPOINTMENT</h2>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>BOOK AN APPOINTMENT</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+            integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <style>
+            html,
+            body {
+                min-height: 100%;
+                background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/images/appointmentsback.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+
+            body,
+            div,
+            form,
+            p {
+                padding: 0;
+                margin: 0;
+                outline: none;
+                font-family: berlin sans fb;
+                font-size: 20px;
+                color: darkslategrey;
+                line-height: 22px;
+            }
+
+            select,
+            input {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 14px;
+                padding: 0;
+                margin: 0;
+                outline: none;
+                color: black;
+                line-height: 22px;
+            }
+
+            h1 {
+                position: absolute;
+                margin: 0;
+                font-size: 32px;
+                text-shadow: 0 0 3px #ffffff, 0 0 5px #ffffff;
+            }
+
+
+            .testbox {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: inherit;
+                padding: 20px;
+            }
+
+            form {
+                width: 40%;
+                max-width: 40%;
+                padding: 90px;
+                border-radius: 6px;
+                background: #fff;
+                box-shadow: 0 0 20px 0 #095484;
+                background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.7)), url('/images/appointmentsform.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: 50% 50%;
+                display: block;
+            }
+
+            .banner {
+                position: relative;
+                height: 210px;
+                background-image: url('/images/appointmentsformtop.jpg');
+                background-size: cover;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .banner::after {
+                content: "";
+                background-color: rgba(0, 0, 0, 0.4);
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            input,
+            select {
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                display: block;
+            }
+
+            input {
+                width: calc(100% - 10px);
+                padding: 5px;
+                font-family: comic sans ms;
+            }
+
+            select {
+                width: 100%;
+                padding: 7px 0;
+                background: transparent;
+                font-family: comic sans ms;
+            }
+
+            .item:hover p,
+            .item:hover i,
+            .question:hover p,
+            .question label:hover,
+            input:hover::placeholder,
+            a {
+                color: #095484;
+            }
+
+            .item input:hover,
+            .item select:hover {
+                border: 1px solid transparent;
+                box-shadow: 0 0 6px 0 #095484;
+                color: #095484;
+            }
+
+            .item {
+                position: relative;
+                margin: 10px 0;
+            }
+
+            input[type="date"]::-webkit-inner-spin-button {
+                display: none;
+            }
+
+            .item i,
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                position: absolute;
+                font-size: 20px;
+                color: #a9a9a9;
+                margin-right: 10px;
+            }
+
+            .item i {
+                right: 2%;
+                top: 30px;
+                z-index: 1;
+            }
+
+            [type="date"]::-webkit-calendar-picker-indicator {
+                right: 1%;
+                z-index: 2;
+                opacity: 0;
+                cursor: pointer;
+            }
+
+            input[type=checkbox] {
+                display: none;
+            }
+
+            label.check {
+                position: relative;
+                display: inline-block;
+                margin: 5px 20px 10px 0;
+                cursor: pointer;
+            }
+
+            .question span {
+                margin-left: 30px;
+            }
+
+            span.required {
+                margin-left: 0;
+                color: red;
+            }
+
+            label.check:before {
+                content: "";
+                position: absolute;
+                top: 2px;
+                left: 0;
+                width: 16px;
+                height: 16px;
+                border-radius: 2px;
+                border: 1px solid #095484;
+            }
+
+            input[type=checkbox]:checked+.check:before {
+                background: #095484;
+            }
+
+            label.check:after {
+                content: "";
+                position: absolute;
+                top: 6px;
+                left: 4px;
+                width: 8px;
+                height: 4px;
+                border: 3px solid #fff;
+                border-top: none;
+                border-right: none;
+                transform: rotate(-45deg);
+                opacity: 0;
+            }
+
+            input[type=checkbox]:checked+label:after {
+                opacity: 1;
+            }
+
+            .btn-block {
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            button {
+                width: 150px;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                background: #095484;
+                font-size: 16px;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background: #0666a3;
+            }
+
+            @media (min-width: 568px) {
+
+                .name-item,
+                .city-item {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                }
+
+                .name-item input,
+                .city-item input {
+                    width: calc(50% - 20px);
+                }
+
+                .city-item select {
+                    width: calc(50% - 8px);
+                }
+            }
+
+            textarea {
+                width: calc(100% - 12px);
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                font-family: comic sans ms;
+                font-size: 15px;
+                padding: 0;
+                margin: 0;
+                outline: none;
+                color: black;
+                line-height: 22px;
+            }
+
+            .item input:hover,
+            .item select:hover,
+            .item textarea:hover {
+                border: 1px solid transparent;
+                box-shadow: 0 0 6px 0 #095484;
+                color: #095484;
+            }
+
+            .item {
+                position: relative;
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <br><br><br><br><br>
+
+        <% if(message !='' ) { %>
+            <div>
+                <%= message %>
             </div>
-            <div class="panel-body">
-                <form class="form-group" method="POST" action="/appointments/add">
 
-                    <p style="font-size: 15px; font-family: Verdana, Geneva, Tahoma, sans-serif; text-align: justify;" >Now you can make your appointments online without any hassle. We make sure to attend to each an every case as soon as possible.</p>
-                    
-                    <br>
-                    
-                    <select id="service" class="form-control" placeholder="Select Service" name="service" aria-describedby="basic-addon1">   
-                    
-                        <option value="">Select Service</option>
-                        <option value="Vaccination">Vaccination</option>
-                        <option value="Immunization">Immunization</option>
-                        <option value="Surgery">Surgery</option>
-                        <option value="Check Up">Check Up</option>
-                        <option value="Pet-taxi">Pet-taxi</option>
-                    </select>
-    
-                    <br />
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="*First Name" name="firstname" aria-describedby="basic-addon1" required />
-                    </div>
-                    <br />
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="*Last Name" name="lastname" aria-describedby="basic-addon1" required />
-                    </div>
-                    <br />
-                    <div class="input-group">
-                        <input type="email" class="form-control" placeholder="*Email" name="email" aria-describedby="basic-addon1" required />
-                    </div>
-                    <br />
-                    <div class="input-group">
-                        <input type="tel" class="form-control" placeholder="*Contact Number" pattern="[0-9]{10}" name="contactnumber" aria-describedby="basic-addon1" required />
-                    </div>
-                    <br />
-                    <div class="input-group">
-                        <input type="date" class="form-control" name="date" aria-describedby="basic-addon1" required />
-                    </div>
-                    <br />
-                    <div class="input-group">
-                        <input type="time" class="form-control" name="time" aria-describedby="basic-addon1" required />
-                    </div>
-                    <br />
-                        <textarea rows="3" class="form-control" name="message" id="appmessage" placeholder="Your Message" aria-describedby="basic-addon1"></textarea>
-                    
-                    <br />
-    
-                    <input type="submit" class="button1" value="Book Now" />
-                    <input type="reset" class="button2" value="Cancel" />
-    
-                </form>
-            </div>
-        </div>
-    </div>
+            <% } %>
+                <div class="testbox">
+                    <form action="/appointments/add" method="POST">
+                        <div class="banner">
+                            <h1 style="font-family: monospace; font-weight: bold; font-size: 35px;">BOOK AN APPOINTMENT
+                            </h1>
+                        </div>
+                        <h3 style="font-family: gabriola;font-size: 30px;">Appointment Details</h3>
 
-</body>
-</html>
- 
-<%- include('../_partial/_footer'); -%>
+                        <div class="item">
+                            <p>Required Service</p>
+                            <select placeholder="Select Service" name="service">
+                                <option value="">Select Service</option>
+                                <% services.forEach (function(service) { %>
+                                    <option value="<%= service.servicename %>">
+                                        <%= service.servicename %>
+                                    </option>
+
+                                    <% }) %>
+
+                            </select>
+                        </div>
+                        <div class="item">
+                            <p>Name</p>
+                            <div class="name-item">
+                                <input type="text" name="firstname" placeholder="*First" required />
+                                <input type="text" name="lastname" placeholder="*Last" required />
+                            </div>
+                        </div>
+                        <div class="item">
+                            <p>Contact Number</p>
+                            <input type="tel" name="contactnumber" placeholder="*Contact Number" pattern="[0-9]{10}"
+                                required />
+                        </div>
+
+                        <div class="item">
+                            <p>Email</p>
+                            <input type="email" name="email" placeholder="*Email" required />
+                        </div>
+
+                        <div class="item">
+                            <p>Appointment Date</p>
+                            <input type="date" name="date" required />
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+
+                        <div class="item">
+                            <p>Your Message</p>
+                            <textarea rows="5" placeholder="Your Message" name="message"></textarea>
+                        </div>
+
+
+                        <div class="btn-block">
+                            <button type="submit" style="font-family: comic sans ms;">Send</button>
+                            <button type="reset" style="font-family: comic sans ms;">Cancel</button>
+
+                        </div>
+
+                    </form>
+                </div>
+
+                <br><br><br><br><br>
+    </body>
+
+    </html>
+
+    <%- include ('../_partial/_footer'); -%>

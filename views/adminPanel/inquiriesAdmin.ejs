@@ -3,6 +3,7 @@
   <html>
 
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
       div.content {
         margin-left: 200px;
@@ -42,7 +43,7 @@
   </head>
 
   <body>
-    <br><br> <br><br>
+    <br><br><br><br><br> <br><br><br>
 
     <table>
       <tr class="headercolor">
@@ -55,7 +56,9 @@
       </tr>
       <% contacts.forEach(function(contact, index) { %>
         <tr>
-          <td>1</td>
+          <td>
+            <%= index %>
+          </td>
           <td>
             <%= contact.contactname %>
           </td>
@@ -76,9 +79,3 @@
         <% }) %>
     </table>
   </body>
-
-
-
-
-
-    <%- include ('../_partial/_footer'); -%>

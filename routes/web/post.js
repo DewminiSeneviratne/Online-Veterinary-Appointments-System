@@ -1,4 +1,4 @@
-var express = require("express");
+/*var express = require("express");
 var multer = require("multer");
 var crypto = require("crypto");
 var path = require("path");
@@ -18,7 +18,7 @@ var storage = multer.diskStorage({
     }
 });
 
-var upload = multer({storage: storage});
+var upload = multer({storage: storage});*/
 
 //router.use(ensureAuthenticated);
 
@@ -31,17 +31,17 @@ var upload = multer({storage: storage});
  });*/
 
  // made a call to the database
- router.get("/", function(req, res){
+ //router.get("/", function(req, res){
     //pass the data to views
-    Post.find().exec(function(err, posts){
-        if(err){console.log(err);}
+    //Post.find().exec(function(err, posts){
+        //if(err){console.log(err);}
 
-        res.render("post/posts",{posts:posts});
-    });
- });
+        //res.render("post/posts",{posts:posts});
+    //});
+// });
 
 
- router.get("/add", function(req, res){
+ /*router.get("/add", function(req, res){
     res.render("post/addpost");
  });
 
@@ -58,34 +58,34 @@ var upload = multer({storage: storage});
         res.redirect("/posts"); //to see if the new post has added
     });
 
- });
+ });*/
 
   //: means a route parameter it could be anything and it's often an ID
  // localhost:3000/posts/12345 --> fetch the post with id 12345
-router.get("/:postId", function(req,res){
+/*router.get("/:postId", function(req,res){
     Post.findById(req.params.postId).exec(function(err, post){
         res.render("post/detailpost",{post:post});
     });
-});
+});*/
 
 // asynchronous call first way
-router.get("/edit/:postId", function(req,res){
+/*router.get("/edit/:postId", function(req,res){
     Post.findById(req.params.postId).exec(function(err, post){
         res.render("post/editpost",{post:post});
     });
-});
+});*/
 
 //asynchronous call second way
 //asynch wait
 //router.post("/update", async function(req, res){
-router.post("/update", upload.single('image'),async function(req, res){
+/*router.post("/update", upload.single('image'),async function(req, res){
 const post = await Post.findById(req.body.postid);
     
     post.title = req.body.title;
     post.content = req.body.content;
     post.image = req.file.path;
 
-    // post.save()
+     post.save()
 
     try {
         let savePost = await post.save();
@@ -99,4 +99,4 @@ const post = await Post.findById(req.body.postid);
 
 });
 
-module.exports = router;
+module.exports = router;*/

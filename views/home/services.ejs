@@ -3,47 +3,125 @@
     <html>
 
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            div.content {
-                margin-left: 200px;
-                padding: 1px 16px;
-                height: 1000px;
+            body {
+                background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/images/servicesback.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
             }
 
-            table {
-                font-family: arial, sans-serif;
-                border-collapse: collapse;
-                width: 85%;
-                margin-left: 210px;
-
+            .cover {
+                width: 50%;
+                height: 50%;
+                margin-left: 30% ;
+                margin-right: 20%;
             }
 
-            td {
-                border: 1px solid #dddddd;
+
+            .collapsible {
+                background-color: #7299c4;
+                color: white;
+                cursor: pointer;
+                padding: 20px;
+                width: 80%;
+                border: none;
                 text-align: left;
-                padding: 8px;
+                outline: none;
+                font-size: 15px;
             }
 
-            th {
-                border: 1px solid #dddddd;
-                text-align: center;
-                padding: 8px;
+            .active,
+            .collapsible:hover {
+                background-color: #9be3df;
             }
 
-            tr:nth-child(even) {
-                background-color: #dddddd;
+            .collapsible:after {
+                content: '\002B';
+                color: white;
+                font-weight: bold;
+                float: right;
+                margin-left: 5px;
             }
 
-            .headercolor {
-                background-color: black;
-                color: #dddddd;
+            .active:after {
+                content: "\2212";
+            }
+
+            .contentservices {
+                padding: 0 18px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+                background-color: whitesmoke;
+                width: 80%;
             }
         </style>
     </head>
 
-    <body>
+    <body><br><br><br><br><br> <br><br><br>
 
-        <table>
+
+
+        
+            <img src="/images/servicescover.jpg" alt="vet" class="cover">
+            
+
+                <h2>Our Main Services</h2>
+                <h3>Best Care For Your Best Friend</h3>
+                <br>
+                <p align="justify">At PetVet, we believe our customers view their animal friends as extensions of their
+                    family. This is why
+                    our suite of services, including wellness programmes and disease diagnosis and treatment, are
+                    designed
+                    to connect, care and cure your companions. <br> <br>
+
+                    We offer the following services for companion (including equines) and exotic animals. These include
+                    wellness programs as well as disease diagnosis and treatment, including surgery, dentistry and
+                    diagnostic imaging (X-Ray/Scan).</p>
+            </div>
+        
+
+
+
+
+        <br><br><br>
+
+
+        
+        <p>Services What We Offer</p>
+        <% services.forEach(function(service, index) { %>
+        <button class="collapsible"><%= service.servicename %></button>
+        <div class="contentservices">
+            <!--<p><%= service.animals %></p>-->
+            <p><%= service.price %></p>
+            <p><%= service.servicedescription %></p>
+        </div>
+        <% }) %>
+
+
+        <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+        </script>
+
+
+
+<br><br><br><br><br>
+        <!--<table>
             <tr class="headercolor">
                 <th>Name</th>
                 <th>Description</th>
@@ -53,7 +131,7 @@
             </tr>
             <% services.forEach(function(service, index) { %>
                 <tr>
-                    
+
                     <td>
                         <%= service.servicename %>
                     </td>
@@ -72,9 +150,11 @@
                     </td>
                 </tr>
                 <% }) %>
-        </table>
+        </table> -->
+
+        <br><br><br><br><br>
     </body>
 
     </html>
 
-<%- include ('../_partial/_footer'); -%>
+    <%- include ('../_partial/_footer'); -%>

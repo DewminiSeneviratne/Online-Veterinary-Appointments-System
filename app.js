@@ -42,7 +42,7 @@ app.use(session({
     saveUninitialized:false
 }));
 
-app.use("/uploads", express.static(path.resolve(__dirname, 'uploads')));
+//app.use("/uploads", express.static(path.resolve(__dirname, 'uploads')));
 app.use("/adminPanel", express.static(path.resolve(__dirname, 'adminPanel')));
 
 //setup passport
