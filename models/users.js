@@ -1,32 +1,14 @@
-const mongoose = require("mongoose");
+/*const mongoose = require("mongoose");
 
-//const SALT_FACTOR =10;
+const SALT_FACTOR =10;
 
 const userSchema = new mongoose.Schema({
     username:{type:String, required:true},
-    //email:{type:String, required:true, unique:true},
+    email:{type:String, required:true, unique:true},
     password:{type:String, required:true},
     createdAt:{type:Date, default:Date.now}
 });
-/*
-userSchema.pre("save", function(done){
-    var user = this;
 
-    if(user.isModified("password")){
-        return done();
-    }
-
-    bcrypt.genSalt(SALT_FACTOR, function(err,salt){
-        if(err){return done(err);}
-        bcrypt.hash(user.password, salt, function(err, hashedPassword){
-            if(err) {return done(err);}
-
-            user.password = hashedPassword;
-
-            done();
-        });
-    });
-});
 
 
 userSchema.methods.checkPassword = function(guess, done){
@@ -35,8 +17,8 @@ userSchema.methods.checkPassword = function(guess, done){
             done(err, isMatch);
         });
     }
-}*/
+}
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+module.exports = User;*/

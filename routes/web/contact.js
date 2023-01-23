@@ -38,30 +38,6 @@ router.post("/add", function (req, res) {
 
 });
 
-/*router.post("/add",async function(req, res){
-const inquiry = await Inquiry.findById(req.body.inquiryid);
-        
-inquiry.contactname = req.body.contactname;
-inquiry.contactemail = req.body.contactemail;
-inquiry.contactno = req.body.contactno;
-inquiry.message = req.body.message;
-    
-        // post.save()
-    
-        try {
-            let saveInquiry = await inquiry.save();
-            console.log("saveinquiry", saveInquiry);
-            res.redirect("/contact/" + req.body.inquiryid);
-    
-        } catch (err) {
-            console.log("error happened");
-            res.status(500).send(err);
-        }
-    
-    });*/
-
-
-
 
 module.exports = router;
 

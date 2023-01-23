@@ -74,6 +74,58 @@ router.get("/appointmentsAdmin", function (req, res) {
     });
 });
 
+//update appointments
+
+router.get("/editAppointments/:id", function (req, res) {
+    let id = req.params.id;
+
+    Appointment.findById(id).exec(function (err, appointmentsdetails) {
+
+        Service.find().exec(function (err, services) {
+            if (err) { console.log(err); }
+            res.render("adminPanel/editAppointments", { appointmentsdetails: appointmentsdetails, services: services });
+        })
+    });
+});
+
+router.post("/updateAppointments/:id", function (req, res) {
+    let id = req.params.id;
+
+    Appointment.findByIdAndUpdate(id, {
+        service: req.body.service,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        contactnumber: req.body.contactnumber,
+        date: req.body.date,
+        //time: req.body.time,
+        message: req.body.message,
+        appointmentID: req.body.apppointmentID
+
+    }, function(err, result) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log("Appointment Updated")
+        }
+        res.redirect("/appointmentsAdmin")
+    });
+
+});
+
+//delete appointments
+router.get("/deleteAppointments/:id", function (req, res) {
+    let id = req.params.id;
+
+    Appointment.findByIdAndRemove(id).exec(function (err) {
+        if (err) { console.log(err); 
+        } else {
+            res.redirect(req.get('referer'));
+        }
+    });
+});
+
 router.get("/inquiriesAdmin", function (req, res) {
 
     Inquiry.find().exec(function (err, contacts) {
@@ -135,24 +187,24 @@ router.post("/login", function (req, res, next) {
     var password = req.body.password;
 
     if (username == "admin" && password == "admin123") {
-        req.flash("success", "Successfully Logged In.");
+        //req.flash("success", "Successfully Logged In.");
         console.log("User Successfully Logged In.")
         return res.redirect("/dashboard");
     }
     else if (username != "admin" && password != "admin123") {
-        req.flash("error", "Incorrect Username and Password");
+        req.flash("error", "Invalid Username and Password.");
         console.log("Invalid Username and Password")
         return res.redirect("/login")
     }
     else {
         if (username != "admin") {
-            req.flash("error", "Incorrect Username");
+            req.flash("error", "Invalid Username.");
             console.log("Invalid Username")
             return res.redirect("/login")
         }
         else if (password != "admin123") {
             //return (null,false,{message: "Incoreect Password"}); 
-            req.flash("error", "Incorrect Password");
+            req.flash("error", "Invalid Password.");
             console.log("Invalid Password")
             return res.redirect("/login")
         }
@@ -165,25 +217,7 @@ router.post("/login", function (req, res, next) {
 
 });
 
-/*router.post("/appointments", function (req, res, next) {
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
-    var email = req.body.email;
-    var contactnumber = req.body.contactnumber;
-    var date = req.body.date;
 
-    if (firstname !== null && lastname !== null && email !== null && contactnumber !== null && date !== null) {
-        req.flash("success", "Appointment Request Sent.");
-        console.log("Appointment Request Sent")
-        return res.redirect("/appointments");
-    }
-    ; passport.authenticate("appointments", {
-        successRedirect: "/appointments",
-        failureRedirect: "/appointments",
-        failureFlash: true
-    })
-
-});*/
 
 
 router.post("/contact", function (req, res, next) {
@@ -192,16 +226,7 @@ router.post("/contact", function (req, res, next) {
     var contactno = req.body.contactno;
     var message = req.body.message;
 
-    /*if (!(contactname === null && contactmail === null && contactno === null && message === null)) {
-        req.flash("success", "Your message was successfully sent.");
-        console.log("Message was successfully sent")
-        return res.redirect("/contact");
-    }
-    ; passport.authenticate("contact", {
-    successRedirect:"/contact",
-    failureRedirect: "/contact",
-    failureFlash:true
-})*/
+
 
     Inquiry.findOne(function (err, inquiry) {
         if (err) { return next(err); }
@@ -228,114 +253,6 @@ router.post("/contact", function (req, res, next) {
 
 });
 
-/*router.post("/signup", function(req,res,next){
-    var username = req.body.username;
-    var password = req.body.password;
-
-    User.findOne({username: username}, function(err, user){
-        if(err){return next(err);}
-        if(user){
-            req.flash("error", "There's already an account with this email");
-            return res.redirect("/");
-        }
-
-        var newUser = new User({
-            username:username,
-            password:password,
-            //email:email
-        });
-
-        newUser.save(next);
-
-    }); passport.authenticate("login", {
-        successRedirect:"/",
-        failureRedirect: "/signup",
-        failureFlash:true
-    })
-
-});*/
-
-/*router.post("/login", authenticate(req,res,next) => {
-    var username = req.body.username;
-    var password = req.body.password;
-
-    if(username === null) 
-    {
-        return res.status(400).json({
-            message: "Invalid Username.",
-        });
-    } 
-    else 
-    {
-        if (username == "admin" && password == "admin123") 
-        {
-            console.log("User Successfully Logged In")
-            res.redirect("/adminpanel")
-        }   else 
-        {
-            console.log("Invalid Password")
-            return res.status(400).json({
-                message: "Incorrect Password",
-            });
-        }
-    }
-});*/
-/*
-router.post("/login", function(req,res,next){
-    var username = req.body.username;
-    var password = req.body.password; */
-
-/*User.findOne({username: username}, function(err, user) {
-    if(err){return next(err);}
-    if(user){
-        req.flash("error", "There's already an account with this email");
-        return res.redirect("/");
-    }*/
-/*
-if(username === null) 
-{
-    return res.status(400).json({
-        message: "Invalid Username.",
-    });
-} 
-else 
-{
-    if (username == "admin" && password == "admin123") 
-    {
-        console.log("User Successfully Logged In.")
-        res.redirect("/adminpanel")
-    }   else 
-    {
-        console.log("Invalid Password")
-        return res.status(400).json({
-            message: "Incorrect Password.",
-        });
-    }
-}
-if(username == "admin" && password == "admin123") {
-    return done(null,false,{message: "Successfully Logged In."});
-} 
-else if (username != "admin" && password != "admin123") {
-    return done(null,false,{message: "Incorrect Username and Password"});
-}
-else {
-    if (username != "admin") {
-        return done(null,false,{message: "Incorrect Username"});
-    } 
-    else if (password != "admin123") {
-        return done(null,false,{message: "Incoreect Password"}); 
-    } 
-}
-
-
-}); passport.authenticate("login", {
-    successRedirect:"/adminpanel",
-    failureRedirect: "/login",
-    failureFlash:true
-});*/
-
-//});
 
 module.exports = router;
 
-//////////////////////////////////////////////////////////////////////////////////////////////

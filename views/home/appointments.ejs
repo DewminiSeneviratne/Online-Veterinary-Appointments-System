@@ -43,10 +43,9 @@
             }
 
             h1 {
-                position: absolute;
-                margin: 0;
                 font-size: 32px;
                 text-shadow: 0 0 3px #ffffff, 0 0 5px #ffffff;
+                text-align: center;
             }
 
 
@@ -61,7 +60,7 @@
             form {
                 width: 40%;
                 max-width: 40%;
-                padding: 90px;
+                padding: 70px;
                 border-radius: 6px;
                 background: #fff;
                 box-shadow: 0 0 20px 0 #095484;
@@ -276,6 +275,27 @@
                 position: relative;
                 margin: 10px 0;
             }
+
+            .alert {
+                padding: 20px;
+                background-color: #459ee7;
+                color: white;
+            }
+
+            .closebtn {
+                margin-left: 15px;
+                color: white;
+                font-weight: bold;
+                float: right;
+                font-size: 22px;
+                line-height: 20px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            .closebtn:hover {
+                color: black;
+            }
         </style>
     </head>
 
@@ -283,23 +303,24 @@
         <br><br><br><br><br>
 
         <% if(message !='' ) { %>
-            <div>
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 <%= message %>
             </div>
 
             <% } %>
                 <div class="testbox">
                     <form action="/appointments/add" method="POST">
-                        <div class="banner">
-                            <h1 style="font-family: monospace; font-weight: bold; font-size: 35px;">BOOK AN APPOINTMENT
+                        <div><br>
+                            <h1 style="font-family: comic sans ms; font-weight: bold; font-size: 30px;">BOOK AN
+                                APPOINTMENT
                             </h1>
                         </div>
-                        <h3 style="font-family: gabriola;font-size: 30px;">Appointment Details</h3>
+                        <h3 style="font-family: gabriola;font-size: 30px;"><br><br></h3>
 
                         <div class="item">
                             <p>Required Service</p>
                             <select placeholder="Select Service" name="service">
-                                <option value="">Select Service</option>
                                 <% services.forEach (function(service) { %>
                                     <option value="<%= service.servicename %>">
                                         <%= service.servicename %>
@@ -309,6 +330,7 @@
 
                             </select>
                         </div>
+                        <br>
                         <div class="item">
                             <p>Name</p>
                             <div class="name-item">
@@ -316,23 +338,24 @@
                                 <input type="text" name="lastname" placeholder="*Last" required />
                             </div>
                         </div>
+                        <br>
                         <div class="item">
                             <p>Contact Number</p>
                             <input type="tel" name="contactnumber" placeholder="*Contact Number" pattern="[0-9]{10}"
                                 required />
                         </div>
-
+                        <br>
                         <div class="item">
                             <p>Email</p>
                             <input type="email" name="email" placeholder="*Email" required />
                         </div>
-
+                        <br>
                         <div class="item">
                             <p>Appointment Date</p>
                             <input type="date" name="date" required />
                             <i class="fas fa-calendar-alt"></i>
                         </div>
-
+                        <br>
                         <div class="item">
                             <p>Your Message</p>
                             <textarea rows="5" placeholder="Your Message" name="message"></textarea>

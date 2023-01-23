@@ -40,53 +40,33 @@
         background-color: black;
         color: #dddddd;
       }
+
+      .updateform {
+        padding: 20px;
+        margin-left: 20%;
+        border: 5px;
+        border-color: black;
+        background-color: rgb(254, 231, 254);
+        width: 30%;
+        border-radius: 5%;
+        font-family: berlin sans fb;
+        font-size: 20px;
+      }
+
+      .input {
+        padding: 10px;
+        font-size: 15px;
+        width: 100%;
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+      }
     </style>
   </head>
 
   <body>
-    <br><br><br><br><br> <br><br><br>
+    <br><br><br><br><br> <br>
 
-    <!--
-      <div class="row my-4">
-        <div class="col-leg-12">
-          <div class="table-responsive">
-            
-            <div class="table table-striped text-center">
-              <thead>
-                <tr class="table-dark">
-                  <th>id</th>
-                  <th>Required Service</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th>Contact Number</th>
-                  <th>Appointmnet Date</th>
-                  <th>Appointment Time</th>
-                  <th>Message</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <td>Vaccination</td>
-                  <td>John</td>
-                  <td>David</td>
-                  <td>johnd@gmail.com</td>
-                  <td>0712396456</td>
-                  <td>28/01/2023</td>
-                  <td>2.30 p.m.</td>
-                  <td>Hello</td>
-                  <td>
-                    <a href="" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
-                    <a href="" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
-                  </td>
-                </tr>
-              </tbody>
-            </div>
-          </div>>
-        </div>
-      </div>
-    </div> -->
+    <h1 style="margin-left: 15%;">Appointments</h1>
 
     <table>
       <thead>
@@ -98,8 +78,9 @@
           <th>Email</th>
           <th>Contact Number</th>
           <th>Date</th>
-          <th>Time</th>
+          <!--<th>Time</th>-->
           <th>Message</th>
+          <th>Action</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -109,7 +90,7 @@
         <%_ appointments.forEach((row, index)=> { _%>
           <tr>
             <td>
-              <%= index %>
+              <%= row.appointmentID %>
             </td>
             <td>
               <%= row.service %>
@@ -129,15 +110,17 @@
             <td>
               <%= row.date %>
             </td>
-            <td>
+            <!--<td>
               <%= row.time %>
-            </td>
+            </td>-->
             <td>
               <%= row.message %>
             </td>
             <td>
-              <a href="/edit/<%= row._id %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
-              <a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+              <a href="/editAppointments/<%= row._id %>" class="text-success" style="margin:auto;display: block;width: 115px;height: 30px;background: #4E9CAF;padding:2px;text-align: center;border-radius: 5px;color: white;line-height: 25px;">Update</a>
+            </td>
+            <td>
+              <a href="/deleteAppointments/<%= row._id %>" class="text-danger" style="margin:auto;display: block;width: 115px;height: 30px;background: #4E9CAF;padding:2px;text-align: center;border-radius: 5px;color: white;line-height: 25px;">Delete</a>
             </td>
           </tr>
 
@@ -148,6 +131,7 @@
 
     </table>
 
+    
 
   </body>
 

@@ -5,8 +5,12 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
+            * {
+                margin-bottom: 0px;
+            }
+
             body {
-                background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/images/servicesback.jpg');
+                background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/images/servicesback.jpg');
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-size: cover;
@@ -15,26 +19,46 @@
             .cover {
                 width: 50%;
                 height: 50%;
-                margin-left: 30% ;
-                margin-right: 20%;
+                margin-left: 25%;
             }
 
+            .servicesimg {
+                width: 50%;
+                height: 50%;
+                margin-left: 25%;
+                margin-top: 0%;
+
+            }
+
+            .desc {
+                margin-top: 10%;
+                margin-left: 15%;
+                margin-right: 15%;
+                text-align: center;
+                font-family: cursive;
+                color: #ba3b89;
+                font-size: 20px;
+                font-weight: bold;
+            }
 
             .collapsible {
                 background-color: #7299c4;
                 color: white;
                 cursor: pointer;
                 padding: 20px;
-                width: 80%;
+                width: 50%;
                 border: none;
                 text-align: left;
                 outline: none;
-                font-size: 15px;
+                font-size: 20px;
+                margin-left: 25%;
+                font-family: kristen itc;
             }
 
             .active,
             .collapsible:hover {
                 background-color: #9be3df;
+                color: cornflowerblue;
             }
 
             .collapsible:after {
@@ -50,12 +74,15 @@
             }
 
             .contentservices {
-                padding: 0 18px;
+                padding: 0 20px;
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.2s ease-out;
                 background-color: whitesmoke;
-                width: 80%;
+                width: 50%;
+                margin-left: 25%;
+                font-family: comic sans ms;
+                color: rgb(45, 45, 129);
             }
         </style>
     </head>
@@ -64,24 +91,29 @@
 
 
 
-        
-            <img src="/images/servicescover.jpg" alt="vet" class="cover">
-            
 
-                <h2>Our Main Services</h2>
-                <h3>Best Care For Your Best Friend</h3>
-                <br>
-                <p align="justify">At PetVet, we believe our customers view their animal friends as extensions of their
-                    family. This is why
-                    our suite of services, including wellness programmes and disease diagnosis and treatment, are
-                    designed
-                    to connect, care and cure your companions. <br> <br>
+        <img src="/images/servicescover.jpg" alt="vet" class="cover">
 
-                    We offer the following services for companion (including equines) and exotic animals. These include
-                    wellness programs as well as disease diagnosis and treatment, including surgery, dentistry and
-                    diagnostic imaging (X-Ray/Scan).</p>
-            </div>
-        
+
+        <div class="desc">
+            <h3 style="font-family: jokerman; font-size: 50px; color: #9d2baa;">Best Care For Your Best Friend</h3>
+
+            <p>At Lil Paws, we believe our customers view their animal friends as extensions of their
+                family.
+                <br><br>
+                We make sure to offer the best service for you and your pet
+                while your stay at our clinic.
+                <br><br>
+                Friendly team of vets and staff will
+                keep your pet comfortable and happy during the treatments.
+                <br><br>
+                Visit our clinic to get the best experience ever.
+                <br><br>
+                OUR PROMISE IS TO OFFER YOU A BEST QUALITY SERVICE
+            </p>
+
+        </div>
+
 
 
 
@@ -89,70 +121,50 @@
         <br><br><br>
 
 
-        
-        <p>Services What We Offer</p>
+
+        <p
+            style="font-family: papyrus; margin-left: 36%; margin-bottom: 0px; font-size: 50px; font-weight: bold; color: rgb(41, 173, 173);">
+            Our Main Services</p>
+        <img src="/images/servicesimgtwo.png" alt="vet" class="servicesimg">
+
         <% services.forEach(function(service, index) { %>
-        <button class="collapsible"><%= service.servicename %></button>
-        <div class="contentservices">
-            <!--<p><%= service.animals %></p>-->
-            <p><%= service.price %></p>
-            <p><%= service.servicedescription %></p>
-        </div>
-        <% }) %>
+            <button class="collapsible">
+                <%= service.servicename %>
+            </button>
+            <div class="contentservices">
+                <!--<p><%= service.animals %></p>-->
+                <p>
+                    <%= service.price %>
+                </p>
+                <p>
+                    <%= service.servicedescription %>
+                </p>
+            </div>
+            <% }) %>
 
 
-        <script>
-            var coll = document.getElementsByClassName("collapsible");
-            var i;
+                <script>
+                    var coll = document.getElementsByClassName("collapsible");
+                    var i;
 
-            for (i = 0; i < coll.length; i++) {
-                coll[i].addEventListener("click", function () {
-                    this.classList.toggle("active");
-                    var content = this.nextElementSibling;
-                    if (content.style.maxHeight) {
-                        content.style.maxHeight = null;
-                    } else {
-                        content.style.maxHeight = content.scrollHeight + "px";
+                    for (i = 0; i < coll.length; i++) {
+                        coll[i].addEventListener("click", function () {
+                            this.classList.toggle("active");
+                            var content = this.nextElementSibling;
+                            if (content.style.maxHeight) {
+                                content.style.maxHeight = null;
+                            } else {
+                                content.style.maxHeight = content.scrollHeight + "px";
+                            }
+                        });
                     }
-                });
-            }
-        </script>
+                </script>
 
+                <img src="/images/servicesimgone.jpg" alt="vet" class="servicesimg">
 
+                <br><br><br><br><br>
 
-<br><br><br><br><br>
-        <!--<table>
-            <tr class="headercolor">
-                <th>Name</th>
-                <th>Description</th>
-                <th>Animals</th>
-                <th>Price</th>
-                <th>Action</th>
-            </tr>
-            <% services.forEach(function(service, index) { %>
-                <tr>
-
-                    <td>
-                        <%= service.servicename %>
-                    </td>
-                    <td>
-                        <%= service.servicedescription %>
-                    </td>
-                    <td>
-                        <%= service.animals %>
-                    </td>
-                    <td>
-                        <%= service.price %>
-                    </td>
-                    <td>
-                        <a href="" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
-                        <a href="" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
-                    </td>
-                </tr>
-                <% }) %>
-        </table> -->
-
-        <br><br><br><br><br>
+                <br><br><br><br><br>
     </body>
 
     </html>

@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .updateform {
+            padding: 20px;
+            margin-left: 20%;
+            border: 5px;
+            border-color: black;
+            background-color: rgb(254, 231, 254);
+            width: 30%;
+            border-radius: 5%;
+            font-family: berlin sans fb;
+            font-size: 20px;
+        }
+
+        .input {
+            padding: 10px;
+            font-size: 15px;
+            width: 100%;
+            border: none;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <br><br><br>
+
+    <h1 style="font-size: 30px;margin-left: 25%;">Update Appointment</h1>
+    <div class="updateform">
+        <form method="post" action="/updateAppointments/<%= appointmentsdetails._id %>">
+            <div>
+                <p>Required Service</p>
+                <select class="input" placeholder="Select Service" name="service" style="font-size: 15px;">
+                    <% services.forEach(function (service, index) { %>
+                        <% if (service.servicename == appointmentsdetails.servicename) { %>
+                            <option value="<%= service.servicename %>" selected><%= service.servicename %></option>
+                            <% } else { %>
+                                <option value="<%= service.servicename %>"><%= service.servicename %></option>
+                                <% } %>
+                                <% }) %>
+                </select>
+            </div>
+            <br>
+            <div>
+                <p>Name</p>
+                <div style="width: 100%;">
+                    <input type="text" name="firstname" value="<%= appointmentsdetails.firstname %>" placeholder="First"
+                        style="width: 49%; padding: 10px; font-size: 15px; border: none;" />
+                    <input type="text" name="lastname" value="<%= appointmentsdetails.lastname %>" placeholder="Last"
+                        style="width: 49%;padding: 10px; font-size: 15px; border: none;" />
+                </div>
+            </div>
+            <br>
+            <div>
+                <p>Contact Number</p>
+                <input class="input" type="tel" name="contactnumber" value="<%= appointmentsdetails.contactnumber %>" placeholder="Contact Number" />
+            </div>
+            <br>
+            <div>
+                <p>Email</p>
+                <input class="input" type="email" name="email" value="<%= appointmentsdetails.email %>" placeholder="Email" />
+            </div>
+            <br>
+            <div>
+                <p>Appointment Date</p>
+                <input class="input" type="date" name="date" value="<%= appointmentsdetails.date %>"/>
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <br>
+            <div>
+                <p>Appointment ID</p>
+                <input class="input" type="number" name="appointmentid" placeholder="Appointment ID" value="<%= appointmentsdetails.appointmentID %>"/>
+            </div>
+            <br>
+            <div>
+                <p>Message</p>
+                <textarea rows="5" placeholder="Message" name="message" value="<%= appointmentsdetails.message %>"
+                    style="width: 100%;font-size: 15px; border: none;font-family: Arial, Helvetica, sans-serif;"></textarea>
+            </div>
+
+
+            <div style="margin-left: 30%; margin-top: 30px; margin-bottom: 20px;">
+                <button type="submit"
+                    style="padding: 10px; cursor: pointer;font-family: berlin sans fb; font-size: 20px;">Update</button>
+                <button type="reset"
+                    style="padding: 10px; cursor: pointer; font-family: berlin sans fb; font-size: 20px;">Cancel</button>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
