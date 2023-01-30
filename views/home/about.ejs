@@ -1,21 +1,103 @@
 <%- include('../_partial/_header'); -%>
-<br><br><br><br><br>
-<html>
+    <br><br><br><br><br>
+    <html>
+
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
+            * {
+                margin-bottom: 0px;
+            }
+
             body {
-                background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/images/aboutback.jpg');
+                background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/images/aboutback.jpg');
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-size: cover;
 
             }
+
+            .desc {
+                margin-top: 3%;
+                margin-left: 15%;
+                margin-right: 15%;
+                text-align: center;
+                font-family: cursive;
+                color: #9d2baa;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .aboutimg {
+                width: 50%;
+                height: 50%;
+                margin-top: 0%;
+
+            }
         </style>
     </head>
+
     <body>
 
+
+        <div class="desc">
+            <h3 style="font-family: Jokerman; font-size: 50px; color: #af1fbf;">
+                -About Us-</h3>
+            <br>
+
+            <h3 style="font-family: papyrus; font-size: 40px; color: #ba3b89;">
+                At Lil Paws, <br> we have a 10 year history of connecting, caring and curing <br>your companion animals.
+            </h3>
+
+            <p style="line-height: 35px;">Bound by an organizational culture - one that fosters respect and compassion
+                to all animals and their human caretakers -
+                Lil Paws sets itself apart from other veterinary services in the country by treating your companion
+                animals with the kind
+                of care, love and kindness we show towards our own fur babies.
+            </p> <br>
+
+            <p style="font-size: 30px;font-family: mv boli; line-height: 45px; color: #771882; font-weight: bold;">
+                Because pets are family.<br>
+                At Lil Paws, we understand this truth.<br>
+                At Lil Paws, we wholeheartedly agree.</p>
+
+            <br><br>
+
+            <img src="/images/aboutimageone.png" alt="vet" class="aboutimg">
+
+
+
+            <br><br>
+
+            <h3 style="font-family: Jokerman; font-size: 50px; color: #2596be;">
+                Our Principles</h3>
+
+            <h3 style="font-family: papyrus; font-size: 50px; color: greenyellow;">
+                Vision</h3>
+
+            <p style="line-height: 35px; color: #28ae91; font-size: 23px;">To foster a world where the symbiotic bond
+                between humans and animals is
+                valued and celebrated. </p>
+
+            <h3 style="font-family: papyrus; font-size: 50px; color: greenyellow;">
+                Mission</h3>
+
+            <p style="line-height: 35px;color: #28ae91; font-size: 23px;">To assist you and your four-legged friends
+                with love, care and respect.
+                At Lil Paws we are dedicated and bound to provide the best service for all your pet’s needs.
+            </p>
+
+        </div>
+
+        <br><br><br>
+
+        <img src="/images/aboutimagetwo.jpg" alt="vet" class="aboutimg" style="margin-left: 35%; width: 30%;">
+
+
+        <br><br><br><br><br>
+
     </body>
-</html>
-<br><br><br><br><br>
-<%- include ('../_partial/_footer'); -%>
+
+    </html>
+    <br><br><br><br><br>
+    <%- include ('../_partial/_footer'); -%>

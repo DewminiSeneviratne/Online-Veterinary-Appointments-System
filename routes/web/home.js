@@ -18,9 +18,7 @@ var router = express.Router();
     res.locals.err = req.flash("error")
     res.locals.info = req.flash("info")
     res.locals.success = req.flash("success");
-
     next();
-
 })*/
 
 router.get("/", function (req, res) {
@@ -34,7 +32,7 @@ router.get("/home", function (req, res) {
 
 router.get("/appointments", function (req, res) {
     Service.find().exec(function (err, services) {
-    res.render("home/appointments", { message: '' ,services: services });
+        res.render("home/appointments", { message: '', services: services });
     })
 });
 
@@ -52,11 +50,28 @@ router.get("/about", function (req, res) {
 });
 
 router.get("/contact", function (req, res) {
-    res.render("home/contact", {message: ''});
+    res.render("home/contact", { message: '' });
 });
 
 router.get("/dashboard", function (req, res) {
-    res.render("adminPanel/dashboard");
+    //res.render("adminPanel/dashboard");
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!    
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+
+    var filter = { "date": today }
+    var sortby = { "appointmentID": -1 }
+
+    Appointment.find(filter).sort(sortby).limit(1).exec(function (err, appointments) {
+        if (err) {
+            console.log(err)
+        }
+
+        res.render('adminPanel/dashboard', { appointments: appointments });
+
+    });
 });
 
 //get all apointments route
@@ -75,7 +90,6 @@ router.get("/appointmentsAdmin", function (req, res) {
 });
 
 //update appointments
-
 router.get("/editAppointments/:id", function (req, res) {
     let id = req.params.id;
 
@@ -102,7 +116,7 @@ router.post("/updateAppointments/:id", function (req, res) {
         message: req.body.message,
         appointmentID: req.body.apppointmentID
 
-    }, function(err, result) {
+    }, function (err, result) {
         if (err) {
             console.log(err);
         }
@@ -119,7 +133,8 @@ router.get("/deleteAppointments/:id", function (req, res) {
     let id = req.params.id;
 
     Appointment.findByIdAndRemove(id).exec(function (err) {
-        if (err) { console.log(err); 
+        if (err) {
+            console.log(err);
         } else {
             res.redirect(req.get('referer'));
         }
@@ -159,6 +174,67 @@ router.post("/addService", function (req, res) {
         res.redirect("/servicesAdmin");
     });
 });
+
+/****************************************************************************************************************************** */
+
+// update services
+router.get("/editServices/:id", function (req, res) {
+    let id = req.params.id;
+
+    Service.findById(id).exec(function (err, services) {
+        if (err) { console.log(err); }
+        res.render("adminPanel/editServices", { services: services });
+    });
+});
+
+router.post("/updateServices/:id", function (req, res) {
+    let id = req.params.id;
+
+    Service.findByIdAndUpdate(id, {
+        servicename: req.body.name,
+        servicedescription: req.body.servicedescription,
+        price: req.body.serviceprice
+
+    }, function (err, result) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log("Service Updated")
+        }
+        res.redirect("/servicesAdmin")
+    });
+
+});
+
+// delete service
+router.get("/deleteServices/:id", function (req, res) {
+    let id = req.params.id;
+
+    Service.findByIdAndRemove(id).exec(function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect(req.get('referer'));
+        }
+    });
+});
+
+// delete inquiry
+router.get("/deleteInquiry/:id", function (req, res) {
+    let id = req.params.id;
+
+    Inquiry.findByIdAndRemove(id).exec(function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect(req.get('referer'));
+        }
+    });
+});
+
+/****************************************************************************************************************************** */
+
 
 router.get("/login", function (req, res) {
     res.render("home/login");

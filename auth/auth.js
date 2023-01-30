@@ -1,5 +1,5 @@
 //middleware to check if user is logged in
-/*var ensureAuth = function ensureAuthenticated(req, res, next){
+var ensureAuth = function ensureAuthenticated(req, res, next){
     if(req.isAuthenticated()){
         next();
     } else {
@@ -9,6 +9,4 @@
 }
 
 
-module.exports = {ensureAuthenticated: ensureAuth}*/
-
-////////////////////////////////////////////////////////////////////////////////
+module.exports = {ensureAuthenticated: ensureAuth};

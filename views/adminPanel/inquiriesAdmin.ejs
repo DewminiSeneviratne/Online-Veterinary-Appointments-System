@@ -39,26 +39,6 @@
         background-color: black;
         color: #dddddd;
       }
-
-      .updateform {
-        padding: 20px;
-        margin-left: 20%;
-        border: 5px;
-        border-color: black;
-        background-color: rgb(254, 231, 254);
-        width: 30%;
-        border-radius: 5%;
-        font-family: berlin sans fb;
-        font-size: 20px;
-      }
-
-      .input {
-        padding: 10px;
-        font-size: 15px;
-        width: 100%;
-        border: none;
-        font-family: Arial, Helvetica, sans-serif;
-      }
     </style>
   </head>
 
@@ -94,51 +74,15 @@
             <%= contact.message %>
           </td>
           <td>
-            <a href="" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
-            <a href="" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+            <a href="/deleteInquiry/<%= contact._id %>" class="text-danger"
+              style="margin:auto;display: block;width: 90px;height: 30px;background: rgb(233, 63, 63);
+              padding:2px;text-align: center;border-radius: 5px;color: white;line-height: 25px;text-decoration: none;">Delete</a>
           </td>
         </tr>
         <% }) %>
     </table>
 
 
-    <br><br><br>
-
-    <h1 style="font-weight: bold; font-size: 30px;margin-left: 20%;">Update Inquiry</h1>
-    <div class="updateform">
-      <form method="post" action="">
-        <div>
-          <p>Name</p>
-          <div>
-            <input class="input" type="text" name="name" placeholder="Name" />
-          </div>
-        </div>
-        <br>
-        <div>
-          <p>Email</p>
-          <input class="input" type="email" name="email" placeholder="Email" />
-        </div>
-        <br>
-        <div>
-          <p>Contact Number</p>
-          <input class="input" type="tel" name="contactnumber" placeholder="Contact Number" pattern="[0-9]{10}" />
-        </div>
-        <br>
-        <div>
-          <p>Message</p>
-          <textarea class="input" rows="5" placeholder="Message" name="message"
-            style="width: 100%;font-size: 15px; border: none;font-family: Arial, Helvetica, sans-serif;"></textarea>
-        </div>
-
-
-        <div style="margin-left: 30%; margin-top: 30px; margin-bottom: 20px;">
-          <button type="submit"
-            style="padding: 10px; cursor: pointer; font-family: berlin sans fb; font-size: 20px;">Update</button>
-          <button type="reset"
-            style="padding: 10px; cursor: pointer; font-family: berlin sans fb; font-size: 20px;">Cancel</button>
-        </div>
-
-      </form>
-    </div>
+    <br><br><br><br><br>
 
   </body>

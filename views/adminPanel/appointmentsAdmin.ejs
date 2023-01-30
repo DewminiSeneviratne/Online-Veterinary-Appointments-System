@@ -80,8 +80,7 @@
           <th>Date</th>
           <!--<th>Time</th>-->
           <th>Message</th>
-          <th>Action</th>
-          <th>Action</th>
+          <th colspan="2">Action</th>
         </tr>
       </thead>
 
@@ -117,10 +116,12 @@
               <%= row.message %>
             </td>
             <td>
-              <a href="/editAppointments/<%= row._id %>" class="text-success" style="margin:auto;display: block;width: 115px;height: 30px;background: #4E9CAF;padding:2px;text-align: center;border-radius: 5px;color: white;line-height: 25px;">Update</a>
+              <a href="/editAppointments/<%= row._id %>" class="text-success"
+                style="margin:auto;display: block;width: 90px;height: 30px;background: #4E9CAF;padding:2px;text-align: center;border-radius: 5px;color: white;line-height: 25px; text-decoration: none;">Edit</a>
             </td>
             <td>
-              <a href="/deleteAppointments/<%= row._id %>" class="text-danger" style="margin:auto;display: block;width: 115px;height: 30px;background: #4E9CAF;padding:2px;text-align: center;border-radius: 5px;color: white;line-height: 25px;">Delete</a>
+              <a href="/deleteAppointments/<%= row._id %>" class="text-danger"
+                style="margin:auto;display: block;width: 90px;height: 30px;background: rgb(233, 63, 63);padding:2px;text-align: center;border-radius: 5px;color: white;line-height: 25px;text-decoration: none;">Delete</a>
             </td>
           </tr>
 
@@ -131,7 +132,8 @@
 
     </table>
 
-    
+
+    <br><br><br><br><br>
 
   </body>
 

@@ -15,17 +15,17 @@ var setUpPassport = require("./setuppassport");
 var app = express();
 
 // Database Connection
-mongoose.set('strictQuery',false);
+mongoose.set('strictQuery', false);
 mongoose.connect(params.DATABASECONNECTION, {});
 
 const db = mongoose.connection;
-db.on('error',(error) => console.log(error));
-db.once('open',() => console.log('Database Connected'));
+db.on('error', (error) => console.log(error));
+db.once('open', () => console.log('Database Connected'));
 
 setUpPassport();
 
 //middlewares
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.set("port", process.env.PORT || 3000);
@@ -34,12 +34,12 @@ app.set("views", path.join(__dirname, "views"));
 //set template engine
 app.set("view engine", "ejs");
 
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-    secret:"abcdefg",
-    resave:false,
-    saveUninitialized:false
+    secret: "abcdefg",
+    resave: false,
+    saveUninitialized: false
 }));
 
 //app.use("/uploads", express.static(path.resolve(__dirname, 'uploads')));
@@ -52,10 +52,10 @@ app.use(passport.session());
 app.use(flash());
 
 //route prefix
-app.use("/",require("./routes/web"));
-app.use("/api",require("./routes/api"));
+app.use("/", require("./routes/web"));
+app.use("/api", require("./routes/api"));
 
-app.listen(app.get("port"), function(){
+app.listen(app.get("port"), function () {
     console.log("Server started on port " + app.get("port"));
 })
 
@@ -67,9 +67,13 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'statics')));
 
 
-app.use((req,res,next) => {
+app.use((req, res, next) => {
     res.locals.message = req.session.message;
     delete req.session.message;
     next();
 })
 
+
+module.exports.app = app;
+
+module.exports = app;

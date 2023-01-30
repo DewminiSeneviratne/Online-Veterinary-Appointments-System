@@ -33,7 +33,7 @@ router.post("/add", function (req, res) {
 
     newInquiry.save(function (err, inquiry) {
         if (err) { console.log(err); }
-        res.render("home/contact", { message: 'Your Message Has Been Sent Successfully.'})
+        res.render("home/contact", { message: 'Your Message Has Been Sent Successfully.' })
     });
 
 });

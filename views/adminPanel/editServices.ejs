@@ -1,0 +1,73 @@
+<%- include('../_partial/_navbarAdminPanel'); -%>
+
+    <html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .updateform {
+                padding: 20px;
+                margin-left: 40%;
+                border: 5px;
+                border-color: black;
+                background-color: rgb(254, 231, 254);
+                width: 30%;
+                border-radius: 5%;
+                font-family: berlin sans fb;
+                font-size: 20px;
+            }
+
+            .input {
+                padding: 10px;
+                font-size: 15px;
+                width: 100%;
+                border: none;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        </style>
+    </head>
+
+    <body>
+        <br><br><br><br><br> <br><br>
+
+        <a href="/servicesAdmin" style="margin-left: 15%;display: block;background: purple;padding:2px;padding: 20px; font-size: 20px; width: 20%;
+            text-align: center;border-radius: 5px;color: white;line-height: 25px; text-decoration: none;">Services
+            List</a>
+
+        <h1 style="font-weight: bold; font-size: 30px;margin-left: 48%;">Update Service</h1>
+        <div class="updateform">
+            <form method="post" action="/updateServices/<%= services._id %>">
+                <div>
+                    <p>Service Name</p>
+                    <div>
+                        <input class="input" type="text" name="name" placeholder="Service Name"
+                            value="<%= services.servicename %>" required />
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <p>Service Description</p>
+                    <textarea rows="5" placeholder="Service Description" name="servicedescription"
+                       style="width: 100%;font-size: 15px; border: none;font-family: Arial, Helvetica, sans-serif;"
+                        required><%= services.servicedescription %></textarea>
+                </div>
+                <br>
+                <div>
+                    <p>Service Price</p>
+                    <input class="input" type="text" name="serviceprice" placeholder="Service Price"
+                        value="<%= services.price %>" />
+                </div>
+
+                <div style="margin-left: 30%; margin-top: 30px; margin-bottom: 20px;">
+                    <button type="submit"
+                        style="padding: 10px; cursor: pointer;font-family: berlin sans fb; font-size: 20px; background-color: rgb(147, 209, 147);border: none;">Update</button>
+                    <button type="reset"
+                        style="padding: 10px; cursor: pointer; font-family: berlin sans fb; font-size: 20px; background-color: rgb(232, 139, 139); border: none;">Cancel</button>
+                </div>
+
+            </form>
+        </div>
+        <br><br><br><br><br>
+    </body>
+
+    </html>
