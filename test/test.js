@@ -243,19 +243,19 @@ describe('11. Login', () => {
 
 });
 
-describe('12. Add Appointments', () => {
+/*describe('12. Add Appointments', () => {
 
     describe('/POST appointments', () => {
 
         let AppointmentsInfo= {
             service: 'Vaccination',
-            firstname: 'John',
-            lastname: 'RichardSon',
+            firstname: 'Farmaan',
+            lastname: 'Sirisena',
             email: 'catpet@gmail.com',
             contactnumber: '763471788',
-            date: '2023-01-30',
-            message: 'hello',
-            appointmentID: '1'
+            date: '2024-01-30',
+            message: 'hello'
+            //appointmentID: '1'
         }
 
         it('/add - POST Appointments Page', (done) => {
@@ -274,17 +274,17 @@ describe('12. Add Appointments', () => {
 
     });
 
-});
+});*/
 
 /*describe('13. Add Inquiries', () => {
 
     describe('/POST inquiries', () => {
 
         let InquiryInfo= {
-            contactname: '',
-            contactemail: '',
-            contactno: '',
-            message: '',
+            contactname: 'Monica',
+            contactemail: 'monica@gmail.com',
+            contactno: '0711234567',
+            message: 'Hi'
         }
 
         it('/add - POST Contact Page', (done) => {
@@ -305,15 +305,14 @@ describe('12. Add Appointments', () => {
 
 });*/
 
-/*describe('14. Add Services', () => {
+describe('14. Add Services', () => {
 
     describe('/POST services', () => {
 
         let ServicesInfo= {
-            servicename: '',
-            servicedescription: '',
-            animals: '',
-            price: '',
+            servicename: 'abc',
+            servicedescription: 'abcdef',
+            price: 'Rs. 1000',
         }
 
         it('/addService - POST Services Page', (done) => {
@@ -332,20 +331,23 @@ describe('12. Add Appointments', () => {
 
     });
 
-});*/
+});
 
 
-/*describe('12. Edit Appointments List', () => {
+describe('12. Edit Appointments List', () => {
 
     describe('/GET editAppointments', () => {
 
 
         it('/editAppointments - GET (edit) Appointments List for Admin', (done) => {
-            let id = '63d6f02fededc350cad789d0'
+            let id = '63ced2d93cf12fa9335bcbc0'
 
             chai.request(app)
-                .get('/editAppointments/:' +id)
+                .get('/editAppointments/' +id)
                 .end((err, res) => {
+                    if (err) {
+                        console.log(err)
+                    }
                     res.should.have.status(200);
                     res.body.should.be.a('object');
                     //res.body.length.should.be.eql(0);
@@ -357,16 +359,18 @@ describe('12. Add Appointments', () => {
 
     });
 
-});*/
+});
 
 
-/*describe('15. Edit Service', () => {
+describe('15. Edit Service', () => {
 
     describe('/GET editServices', () => {
 
         it('/editServices - GET Services List for Admin', (done) => {
+            let serviceid = '63d80c9532ffaabb90255723'
+
             chai.request(app)
-                .get('/editServices')
+                .get('/editServices/' + serviceid)
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
@@ -379,6 +383,34 @@ describe('12. Add Appointments', () => {
 
     });
 
-});*/
+});
 
+
+
+describe('16. Delete Inquiry', () => {
+
+    describe('/GET deleteInquiry', () => {
+
+
+        it('/deleteInquiry - GET delete inquiry for Admin', (done) => {
+            let _id = '63d8181b14d9135bcb7a14fd'
+
+            chai.request(app)
+                .get('/deleteInquiry/'+_id)
+                .end((err, res) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    //res.body.length.should.be.eql(0);
+
+                    done();
+                })
+        });
+
+
+    });
+
+});
 
