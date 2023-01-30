@@ -8,7 +8,6 @@ var session = require("express-session");
 var flash = require("connect-flash");
 var params = require("./params/params");
 //const hbs = require("express-handlebars");
-require("dotenv").config();
 
 var setUpPassport = require("./setuppassport");
 

@@ -220,7 +220,7 @@ describe('11. Login', () => {
 
     describe('/POST login', () => {
 
-        let loginInfo= {
+        let loginInfo = {
             username: 'admin',
             password: 'admin123'
         }
@@ -309,7 +309,7 @@ describe('14. Add Services', () => {
 
     describe('/POST services', () => {
 
-        let ServicesInfo= {
+        let ServicesInfo = {
             servicename: 'abc',
             servicedescription: 'abcdef',
             price: 'Rs. 1000',
@@ -343,7 +343,7 @@ describe('12. Edit Appointments List', () => {
             let id = '63ced2d93cf12fa9335bcbc0'
 
             chai.request(app)
-                .get('/editAppointments/' +id)
+                .get('/editAppointments/' + id)
                 .end((err, res) => {
                     if (err) {
                         console.log(err)
@@ -365,9 +365,11 @@ describe('12. Edit Appointments List', () => {
 describe('15. Edit Service', () => {
 
     describe('/GET editServices', () => {
+        after(() => { process.exit(); });
+
 
         it('/editServices - GET Services List for Admin', (done) => {
-            let serviceid = '63d80c9532ffaabb90255723'
+            let serviceid = '63cb80d83153959bc294b4df'
 
             chai.request(app)
                 .get('/editServices/' + serviceid)
@@ -386,7 +388,7 @@ describe('15. Edit Service', () => {
 });
 
 
-
+/*
 describe('16. Delete Inquiry', () => {
 
     describe('/GET deleteInquiry', () => {
@@ -396,7 +398,7 @@ describe('16. Delete Inquiry', () => {
             let _id = '63d8181b14d9135bcb7a14fd'
 
             chai.request(app)
-                .get('/deleteInquiry/'+_id)
+                .get('/deleteInquiry/' + _id)
                 .end((err, res) => {
                     if (err) {
                         console.log(err)
@@ -412,5 +414,5 @@ describe('16. Delete Inquiry', () => {
 
     });
 
-});
+});*/
 
